@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Chess.com Low Time Alert",
+  "version": "1.0.0",
+  "description": "Warns you when only your clock is ticking and drops below a threshold on chess.com. Configurable alert types and languages (includes Hungarian).",
+  "permissions": ["storage", "notifications", "tts"],
+  "host_permissions": ["https://www.chess.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.chess.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "Chess.com Low Time Alert",
+    "default_popup": "options.html"
+  }
+}
